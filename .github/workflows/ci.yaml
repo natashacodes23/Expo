@@ -15,10 +15,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Compile C application
-        run: 
-          output=$(./sdo-expo 2 10)
-          echo "Actual output: $output"
-          test "$output = " 2 ^ 10 = 1024"
+        run: gcc expo/expo.c -lm -o sdo-expo
+
+      -name: Test exponentiation
+       run:  
+         output=$(./sdo-expo 2 10)
+         echo "Actual output: $output"
+         test "$output = " 2 ^ 10 = 1024"
         
 
   # ============================================================
