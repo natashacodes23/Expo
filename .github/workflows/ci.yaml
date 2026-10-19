@@ -22,6 +22,11 @@ jobs:
          output=$(./sdo-expo 2 10)
          echo "Actual output: $output"
          test "$output" = " 2 ^ 10 = 1024"
+         if [ "$output" != "$expected" ]; then
+           echo "Test failed: expected '$expected', got '$output' "
+           exit 1
+         fi 
+         echo "Test passed!"
         
 
   # ============================================================
