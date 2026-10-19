@@ -21,7 +21,8 @@ int main(int argc, char *argv[]) {
         printf("Enter the exponent: ");
         fflush(stdout);
 
-        if (scanf("%lf", &exponent) != 1) {
+        if (scanf("%lf", &exponent) != 1)
+        {
             fprintf(stderr, "Invalid number.\n");
             return 1;
         }
