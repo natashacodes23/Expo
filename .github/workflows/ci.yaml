@@ -6,38 +6,7 @@ on:
   pull_request:
 
 jobs:
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
-int main(int argc, char *argv) {
-    double base, exponent;
-
-    if (argc == 3) {
-        base = atof(argv[1]);
-        exponent = atof(argv[2]);
-    } else {
-        printf("Enter the base: ");
-        fflush(stdout);
-
-        if (scanf("%lf", &base) != 1) {
-            fprintf(stderr, "Invalid number.\n");
-            return 1;
-        }
-
-        printf("Enter the exponent: ");
-        fflush(stdout);
-
-        if (scanf("%lf", &exponent) != 1)
-        {
-            fprintf(stderr, "Invalid number.\n");
-            return 1;
-        }
-    }
-
-    printf("%g ^ %g = %g\n", base, exponent, base * exponent);
-    return 0;
-}
 
   task1-test:
     runs-on: ubuntu-latest
@@ -46,9 +15,11 @@ int main(int argc, char *argv) {
       - uses: actions/checkout@v4
 
       - name: Compile C application
-        run: gcc expo/expo.c -lm -o sdo-expo
-
-      # TASK 1.1: Add your functional test step here.
+        run: 
+          output=$(./sdo-expo 2 10)
+          echo "Actual output: $output"
+          test "$output = " 2 ^ 10 = 1024"
+        
 
   # ============================================================
   # TASK 1.2 — THE UNPROTECTED DOCKER BUILD
